@@ -1,0 +1,32 @@
+version: '3.9'
+
+networks:
+  internal_nw:
+    name: internal_nw
+    driver: bridge
+
+
+services:
+  web:
+    container_name: web
+    build: .
+    volumes:
+      - .:/code
+    command: sh entrypoint.sh
+    depends_on:
+      - database
+    ports:
+      - "8000:8000"
+    networks:
+      - internal_nw
+  database:
+    container_name: database
+    image: cockroachdb/cockroach:v22.2.0
+    command: start-single-node --insecure --http-addr 0.0.0.0
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d
+    ports:
+      - "26257:26257"
+      - "8080:8080"
+    networks:
+      - internal_nw
