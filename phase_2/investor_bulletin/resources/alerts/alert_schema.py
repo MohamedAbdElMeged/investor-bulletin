@@ -2,10 +2,10 @@
 """_summary_
 This file to abstract any validation logic for the Alerts
 """
-from resources.alert_rules.alert_rule_model import AlertRule
 from pydantic import BaseModel
+from uuid import UUID
 
 class AlertCreate(BaseModel):
     symbol: str
     stock_price: float
-    alert_rule: AlertRule
+    alert_rule_id: UUID

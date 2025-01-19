@@ -10,7 +10,7 @@ this file to write any business logic for the Rules
 
 
 
-from investor_bulletin.resources.alerts.alert_dal import get_all_alerts_dal
+from resources.alerts.alert_dal import get_all_alerts_dal
 
 
 def get_all_alerts(session):
