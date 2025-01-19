@@ -16,7 +16,6 @@ def init_subscriber():
       return connection
 
 def process_threshold_alert_body(body):
-    print("entered process")
     symbol = body["symbol"]
     price = float(body["price"])
     alert_rules = get_all_alert_rules(session)
