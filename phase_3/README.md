@@ -26,6 +26,6 @@ to be able to fetch the market data periodically every 5 minutes and check if an
 ### How To Run
 
 Just run `make up`, create your desired alert rules and let the magic begins 🪄 🧙‍♂️
+> Note: In case you get make not found specially in Windows , run `sh up.sh`
 
-### Examples
 
