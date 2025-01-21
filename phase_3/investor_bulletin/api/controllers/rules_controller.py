@@ -2,7 +2,7 @@ from fastapi import APIRouter
 from resources.alert_rules.alert_rule_schema import AlertRuleCreate, AlertRuleUpdate
 from resources.alert_rules.alert_rule_service import create_alert_rule, update_alert_rule, get_all_alert_rules,delete_alert_rule
 from resources.alerts.alert_service import get_all_alerts
-from db.models.models import session
+from db.models.models import session,SessionLocal
 router = APIRouter()
 
 @router.post("")
@@ -28,9 +28,4 @@ def delete(id:str):
 
 @router.get("/alerts")
 def get_alerts():
-    return get_all_alerts(session)
-
-
-@router.get("/{symbol}")
-def get_by_symbol(symbol:str):
-    return get_all_alert_rules_by_symbol(id, session)
+    return get_all_alerts(SessionLocal)
