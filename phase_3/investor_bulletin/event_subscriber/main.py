@@ -25,7 +25,9 @@ def process_threshold_alert_body(body):
         if price >= alert_rule.threshold_price and symbol == alert_rule.symbol:
             print("new alert")
             alert_create = AlertCreate(symbol=symbol,stock_price=price,alert_rule_id=alert_rule.id,triggered_at=datetime.now())
-            create_new_alert(alert_create,SessionLocal)
+            new_alert = create_new_alert(alert_create,SessionLocal)
+            print(f"new alert created for {new_alert.symbol} at {new_alert.triggered_at} because price reached {new_alert.stock_price}")
+
     return
 def on_event(ch, method, properties, body):
     print("new event come")

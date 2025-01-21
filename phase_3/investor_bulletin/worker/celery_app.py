@@ -17,7 +17,7 @@ def create_celery_app():
   celery_app.conf.beat_schedule = {
       'get-market-prices-and-check-alert-rules-every-five-minutes': {
           'task': 'worker.tasks.get_market_prices_and_check_alert_rules',
-          'schedule': crontab(minute='*')
+          'schedule': crontab(minute='*/5')
       }
   }
   return celery_app
